@@ -1,0 +1,1 @@
+﻿This module describes, how to use hook menu, hook theme and hook preprocessor with EntityFieldQuery concept
