@@ -4,13 +4,13 @@
  * Implementation of hook_menu()
  */
 function custom_menu_concept_menu(){
-    $items['theme_menu_concept'] = array(
-        'title' => 'Page Title',  // page title
-        'description' => 'Simple custom hook_menu() implementation.', // describe the page for the menu system.visitors will not see this
-        'page callback' => 'my_page_function', // function that is called when visiting the new path
-        'access arguments' => array('access content'),  // permissions required to view page
-    );  
-    return $items;
+  $items['theme_menu_concept'] = array(
+    'title' => 'Page Title',  // page title
+    'description' => 'Simple custom hook_menu() implementation.', // describe the page for the menu system.visitors will not see this
+    'page callback' => 'my_page_function', // function that is called when visiting the new path
+    'access arguments' => array('access content'),  // permissions required to view page
+  );  
+  return $items;
 }
 
 /*
@@ -29,9 +29,8 @@ function my_page_function(){
     $article_nids = array_keys($result['node']);
     $nodes = entity_load('node', $article_nids);
   }
-   return theme('custom_page', array('nodes' => $nodes));
+  return theme('custom_page', array('nodes' => $nodes));
   //return $block;         
-  
 }
    
 /*
@@ -39,20 +38,19 @@ function my_page_function(){
  */
 function custom_menu_concept_theme(){
   return array(
-		'custom_page' => array(
-			'template' => 'custom-page',
-			'variables' => array('nodes' => NULL),
-		),
+    'custom_page' => array(
+    'template' => 'custom-page',
+    'variables' => array('nodes' => NULL),
+    ),
   );
 }
-
 
 /*
  * Preprocess function for custom template.
  */
 function custom_menu_concept_preprocess_custom_page(&$vars) {
- foreach($vars['nodes'] as $node) {
-  $vars['node_title'] .= $node->title.'</br>';
- }
+  foreach($vars['nodes'] as $node) {
+    $vars['node_title'] .= $node->title.'</br>';
+  }
 }
 
